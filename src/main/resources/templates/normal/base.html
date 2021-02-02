@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:fragment="layout(content)">
+<head>
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+	integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+	crossorigin="anonymous">
+	
+	<!-- font awesome icons css -->
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
+	integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w=="
+	crossorigin="anonymous" />
+<link rel="stylesheet" th:href="@{/css/style.css}" />
+
+<title th:text="${title}">Base Html</title>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+		integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+		crossorigin="anonymous"></script>
+		
+
+
+
+</head>
+<body>
+
+	<!-- Start  Nav-bar -->
+
+
+	<nav class=" fixed-top navbar navbar-expand-lg navbar-dark bg-primary						">
+		<div class="container-fluid">
+			<a class="navbar-brand" href="/user/index">Pet Hostel</a>
+			<button class="navbar-toggler" type="button"
+				data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+				aria-controls="navbarSupportedContent" aria-expanded="false"
+				aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<ul class="navbar-nav ml-auto text-uppercase">
+					<li class="nav-item"><a class="nav-link active"
+						aria-current="page" th:href="@{/user/index}">Home</a></li>
+
+					<li class="nav-item"><a class="nav-link" href="#"
+						th:href="@{/user/profile}"><span th:text=${user.name}></span></a></li>
+
+					<li class="nav-item"><a class="nav-link" th:href="@{/logout}">Logout</a></li>
+
+					
+
+				</ul>
+
+			</div>
+		</div>
+	</nav>
+
+	<!-- End  Nav-bar -->
+
+	<!-- Sidebar -->
+	<div class="sidebar mt-5 ">
+		<span onclick="toggleSidebar()" class="crossBtn">&times;</span>
+		 
+		<a id="home-link" href="#" th:href="@{/user/index}" class="item active "><i class="fas fa-home"></i> Home</a> 
+		<a id="service-link" href="#" th:href="@{/user/show_pets/0}" class="item"><i class="fas fa-dog"></i> Boarded Pets</a> 
+		<a id="board-link" href="#" th:href="@{/user/boardPet}" class="item"><i class="fas fa-th-large"></i> Pet Care</a> 
+		<a id="profile-link" href="#" th:href="@{/user/profile}" class="item"><i class="fas fa-user-circle"></i> Your Profile</a> 
+		<a id="setting-link" href="#" th:href="@{/user/settings}" class="item"><i class="fas fa-user-cog"></i> Settings</a>
+		<a  href="#" th:href="@{/logout}" class="item"><i class="fas fa-sign-out-alt"></i> Logout</a>
+	
+		<div class="divider"></div>
+	</div>
+
+	<!-- End Sidebar -->
+
+	<!-- Content -->
+	<div class="content mt-4">
+	
+		
+		<i onclick="toggleSidebar()" class="fas fa-bars m-3 crossBtn">&times;</i>
+		<!-- Message Box -->
+		<div th:if="${session.message}" class="container">
+			<div th:classappend="${'alert-'+session.message.type}" class="alert text-center" role="alert">
+				<span th:text="${session.message.content}"></span>  				
+			</div>
+			<th:block th:text="${#session.removeAttribute('message')}"></th:block>
+			<div>
+			
+	
+	
+		</div>
+		</div>
+		
+		
+		<div th:replace="${content}"></div>
+		
+	
+</div>
+	<!-- End Content -->
+
+
+
+	<!-- Optional JavaScript -->
+	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+	
+	<script
+		src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+		integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+		integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+		crossorigin="anonymous"></script>
+	<script th:src="@{/js/script.js}"></script>
+	
+	
+</body>
+</html>

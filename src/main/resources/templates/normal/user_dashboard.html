@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="normal/base::layout(~{::section})">
+<head>
+<meta charset="ISO-8859-1">
+<title>Home</title>
+</head>
+<body >
+
+    <section class="d-flex  align-items-center">
+
+
+        
+
+
+            <div id="carouselExampleIndicators" class="carousel" data-ride="carousel">
+
+
+                <div class="carousel-item active ">
+                
+                    <img  class="d-block  w-100" src="/image/3.jpg" alt="First slide">
+	                <div class="carousel-caption text-center">
+	                
+			          <h2>Welcome to Pet Hostel</h2>
+			          <p >You leave your pet, We Love your pet. You, Me, and the Dog. A pet sitting that everything you need. A perfect pet sitting.</p>
+			          <a href="#" th:href="@{/user/boardPet}" class="item btn btn-success">Board a pet</a>
+			          <a href="#" th:href="@{/user/show_pets/0}" class="item btn btn-primary">History</a>
+			          
+			        </div>
+                </div>
+
+                
+
+
+        </div>
+
+    </section >
+		<script >
+		$(document).ready(()=>{
+			$(".item").removeClass("active");
+			$("#home-link").addClass("active");
+		});
+		</script>
+
+
+</body>
+</html>

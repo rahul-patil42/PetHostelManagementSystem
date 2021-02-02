@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="normal/base::layout(~{::section})">
+<head>
+<meta charset="ISO-8859-1">
+<title>Home</title>
+</head>
+<body>
+<section >
+<!-- Hidden field to carry pet_id -->	
+							<input type="hidden" th:value="${pet.pet_id}" name="pet_id">
+        <div class="card" th:if=${pet}>
+            <div class="card-body" >
+                <div class="container text-center">
+                    <img style="height: 200px; width: 200px;" class="pet_profile_picture rounded-circle" alt="pet_picture" src="" th:src="@{'/image/'+${pet.image}}">
+              <h3 class="mt-3" th:text=${pet.pet_name}></h3>
+          <br/>
+          
+              <table class="table">
+            
+					   <tbody>
+					   <tr>
+					      <th scope="col">Pet_Id</th>
+					      <th><span th:text="${'PHMPET'+pet.pet_id}"></span></th>
+					      
+					    </tr>
+					    <tr>
+					      <th scope="col">Pet_type</th>
+					      <td><span th:text=${pet.pet_type}></span></td>
+					      
+					    </tr>
+					 
+					 
+					    <tr>
+					      <th scope="row">About</th>
+					      <td><span th:text=${pet.about_pet}></span></td>
+			
+					    </tr>
+                        
+					  </tbody>
+					</table>
+					<div class="container text-center">
+        			<a class="btn btn-sm btn-secondary" th:href="@{'/user/update_pet/'+${pet_id}}" >Update </a>
+					<a  class="btn btn-sm btn-danger" th:href="@{'/user/delete/'+${pet_id}}">Delete</a>
+        </div>
+        
+                </div>
+               
+            </div>
+             
+        </div>
+        
+	<h1 class="text-center bg-danger text-white"th:unless="${pet}">You don't have permission to see this....</h1>
+
+</section >
+
+
+
+</body>
+</html>

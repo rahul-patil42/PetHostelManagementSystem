@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="normal/base::layout(~{::section})">
+<head>
+<meta charset="ISO-8859-1">
+<title>form</title>
+</head>
+<body>
+	<section>
+		<div class="card ">
+			<div class="card-body">
+				<h1 class="text-center">Update PET</h1>
+				<div class="container-fluid mt-1">
+					<div class="row">
+						<div class="col-md-8 offset-md-2">
+							<form action="#" th:object="${pet}" 
+									enctype="multipart/form-data" 
+									method="POST" 
+									th:action="@{/user/processUpdate}" 
+									class="mt-2">
+									
+								<!-- Hidden field to carry pet_id -->	
+							<input type="hidden" th:value="${pet.pet_id}" name="pet_id">		
+							
+								<!-- Pet Name -->
+								<div class="input-group">
+
+									<div class="input-group-prepend">
+
+										<div class="input-group-text ">  Name &nbsp; 
+
+											<i class="fas fa-pen" >
+											
+											</i>
+											
+										</div>
+									</div>
+									<input type="text" id="pet_name" name="pet_name" th:value="${pet.pet_name}") placeholder="Enter Pet name" class="form-control"  required>
+								</div>
+								
+								<!-- pet type -->
+								<div class="input-group mt-3" >
+
+									<div class="input-group-prepend">
+
+										<div class="input-group-text ">  Type &nbsp; 
+
+											<i class="fas fa-pen" >
+											
+											</i>
+											
+										</div>
+									</div>
+									<input required type="text" id="pet_type" name="pet_type" th:value="${pet.pet_type}" placeholder="Enter Pet type" class="form-control">
+								</div>
+
+								<!-- About Pet -->
+								<div class="input-group mt-3" >
+
+									
+									<textarea  required name="about_pet"  cols="50" rows="20" id="mytextarea" class="form-control" th:text="${pet.about_pet}" placeholder="Enter about pet"></textarea>
+								
+								</div>
+									<br/>
+									<!--Pet image-->
+									<div class="container text-center rounded">
+                    					<img style="height: 200px; width: 200px;" class="pet_profile_picture rounded-circle" alt="pet_picture" src="" th:src="@{'/image/'+${pet.image}}">
+                    				</div>
+									<p class="text-center text-secondary" >Choose new Picture</p>
+									<div class="custom-file mt-3">
+										<input type="file" name="petImage">
+									</div>
+									
+									<div class="container text-center image">
+										<button type="submit" class="btn btn-outline-primary" value="">Update Pet information</button> 
+									</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+
+		<script>
+		      tinymce.init({
+		        selector: '#mytextarea',
+		        	width : "780",
+		        	height:"300"
+		      });
+		    </script>
+
+
+	</section>
+
+
+
+</body>
+</html>

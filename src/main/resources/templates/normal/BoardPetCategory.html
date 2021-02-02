@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="normal/base::layout(~{::section})">
+
+<head>
+	<meta charset="ISO-8859-1">
+	<title>Insert title here</title>
+</head>
+
+<body>
+	<section>
+		<div class="container">
+			<div class="jumbotron">
+				<h1 class="text-monospace">Pet Care</h1>
+				<p class="lead">
+				<ul>
+					<li>PROVIDE A PROTECTED AND CLEAN LIVING ENVIRONMENT FOR YOUR PET.</li>
+					<li>FEED A QUALITY DIET AND PREVENT OBESITY.</li>
+					<li>PET EXAMINED BY A VETERINARIAN ON A REGULAR BASIS.</li>
+					<li>PROVIDE AMPLE OPPORTUNITIES TO EXERCISE.</li>
+					<li>COMMUNICATE WITH YOUR PET AND DEVELOP A RELATIONSHIP.</li>
+					<li>Dog Service Price = 1200 per day</li>
+					<li>Cat Service Price = 1000 per day</li>
+				</ul>
+				</p>
+
+
+				<div class="btn-group " role="group">
+
+					<form action="/user/boardPetForm">
+					<h3 class="text-monospace"> For Boarding click below button:</h3>
+						<input type="submit" name="category" class="btn btn-outline-info" value="Dog">
+						<input type="submit" name="category" class="btn btn-outline-info" value="Cat">
+
+					</form>
+
+
+
+				</div>
+			</div>
+		</div>
+		<script>
+			tinymce.init({
+				selector: '#mytextarea',
+				width: "780",
+				height: "300"
+			});
+		</script>
+		<script>
+			$(document).ready(() => {
+				$(".item").removeClass("active");
+				$("#board-link").addClass("active");
+			});
+		</script>
+	</section>
+
+</body>
+
+</html>

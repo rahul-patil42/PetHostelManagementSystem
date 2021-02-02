@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="base::layout(~{::section})">
+<head>
+<meta charset="ISO-8859-1">
+<title></title>
+</head>
+<body>
+	<section>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-6 offset-md-3">
+
+					<div class="my-card mt-3">
+
+						<div th:if="${session.message}"
+							th:classappend="${session.message.type}" class="alert "
+							role="alert">
+							<p th:text="${session.message.content}"></p>
+							<th:block th:text="${#session.removeAttribute('message')}"></th:block>
+						</div>
+
+						<form  action="#" th:action="@{/do_register}"
+							method="post" th:object="${user}">
+
+							<img style="height: 100px" alt="register" src=""
+								th:src="@{/image/id-card.png}">
+
+							<h3 class="text-center">Create an Account</h3>
+
+							<div class="form-group">
+								<label for="name">Name:</label> <input
+									class="form-control "
+									th:classappend="${#fields.hasErrors('name')?'is-invalid':''}"
+									name="name" type="text" id="name"
+									placeholder="Enter Your Name" aria-describedby="emailHelp"
+									required th:value="${user.name}">
+							</div>
+
+							<div class="invalid-feedback"
+								th:each="e:${#fields.errors('name')}" th:text="${e}">
+
+
+							</div>
+
+							<div class="form-group">
+								<label for="email">Email:</label> <input type="email"
+									class="form-control" placeholder="Enter valid Email"
+									name="email" id="email" required
+									th:value="${user.email}"><br>
+							</div>
+
+							<div class="form-group">
+								<label for="phone">Phone Number:</label> <input
+									class="form-control" type="text" name="phone"
+									id="phone" minlength="3" maxlength="10" required
+									pattern="[0-9]{10}" placeholder="Enter 10 Digit Mobil Number"
+									th:value="${user.phone}"><br>
+							</div>
+
+
+							<div class="form-group">
+								<label for="password">Password:</label> <input
+									class="form-control" type="password" name="password"
+									id="password" placeholder="Enter password" minlength="3"
+									maxlength="8" required><br>
+							</div>
+
+							<div class="form-group">
+								<label for="address">Address:</label>
+								<textarea class="form-control" name="address"
+									id="address" placeholder="Enter Your Address" rows="7"
+									th:text="${user.address}" required></textarea>
+								<br>
+							</div>
+
+
+							<div class="form-group form-check">
+								<input class="form-check-input" type="checkbox" name="agreement"
+									id="agreement"> I agree to the Terms and Conditions and
+								Privacy Policy<br> <br>
+
+							</div>
+
+							<div class="container text-center">
+								<button type="submit" class="  btn bg-primary text-white">Create</button>
+								<button type="reset" class="  btn btn-warning ">Cancel</button>
+							</div>
+
+						</form>
+
+					</div>
+
+				</div>
+
+			</div>
+		</div>
+
+	</section>
+
+
+
+</body>
+</html>

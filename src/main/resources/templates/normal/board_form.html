@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="normal/base::layout(~{::section})">
+<head>
+<meta charset="ISO-8859-1">
+<title>form</title>
+</head>
+<body>
+	<section>
+	
+		<div class="card ">
+			<div class="card-body">
+				<h1 class="text-center">Board PET</h1>
+				<div class="container-fluid mt-1">
+					<div class="row">
+						<div class="col-md-8 offset-md-2">
+							<form action="#" th:object="${pet}" 
+									enctype="multipart/form-data" 
+									method="POST" 
+									th:action="@{/user/processPet}" 
+									class="mt-2">
+								<!-- Pet Name -->
+								<div class="input-group">
+
+									<div class="input-group-prepend">
+
+										<div class="input-group-text ">  Name &nbsp; 
+
+											<i class="fas fa-pen" >
+											
+											</i>
+											
+										</div>
+									</div>
+									<input type="text" id="pet_name" name="pet_name" placeholder="Enter Pet name" class="form-control" required>
+								</div>
+								
+								<!-- pet type -->
+								<div class="input-group mt-3" >
+
+									<div class="input-group-prepend">
+
+										<div class="input-group-text ">  Category &nbsp; 
+	
+										</div>
+									</div>
+									<input readonly required type="text" id="pet_type" name="pet_type" th:value="${category}" placeholder="Enter Pet type" class="form-control">
+								</div>
+								
+								<!-- pickup date -->
+								<div class="input-group mt-3" >
+
+									<div class="input-group-prepend">
+
+										<div class="input-group-text ">  Pickup Date &nbsp; 
+	
+										</div>
+									</div>
+									<input  required type="text" id="pickup" name="pickup" class="form-control"   placeholder="dd/mm/yyyy" >
+								</div>
+								<!-- delivery date -->
+								<div class="input-group mt-3" >
+
+									<div class="input-group-prepend">
+
+										<div class="input-group-text ">  Delivery Date &nbsp; 
+	
+										</div>
+									</div>
+									<input  required type="text" id="delivery" name="delivery" class="form-control "  placeholder="dd/mm/yyyy" >
+								</div>
+								
+								<!-- About Pet -->
+								<div class="input-group mt-3" >
+
+									
+									<textarea  required name="about_pet"  cols="50" rows="20" id="about_pet" class="form-control " placeholder="Enter about pet"></textarea>
+								
+								</div>
+									
+									<!--Pet image-->
+									<div class="custom-file mt-3">
+										<input type="file" name="petImage">
+									</div>
+									<div class="container text-center">
+										<button type="submit" class="btn btn-outline-primary" value="">Save data</button> 
+									</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+
+		<script>
+		      tinymce.init({
+		        selector: '#mytextarea',
+		        	width : "780",
+		        	height:"300"
+		      });
+		    </script>
+		<script >
+		$(document).ready(()=>{
+			$(".item").removeClass("active");
+			$("#board-link").addClass("active");
+		});
+		</script>
+
+	</section>
+
+
+
+</body>
+</html>
